@@ -15,7 +15,7 @@ public class CreateOrderResponse {
 
     // Matches: "amount": 100000
     @SerializedName("amount")
-    private int amount;
+    private String amount;
 
     // --- Getters ---
     public String getResponseStatus() {
@@ -26,7 +26,7 @@ public class CreateOrderResponse {
         return orderId;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return amount;
     }
 }
