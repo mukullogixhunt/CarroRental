@@ -229,12 +229,22 @@
                 android:text="@string/view_bill" />
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            android:text="@string/add_remark" />
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_upload_images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_weight="1"
-            android:visibility="gone"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:visibility="visible"
             android:text="@string/upload_images" />
         <TextView
             android:layout_width="match_parent"

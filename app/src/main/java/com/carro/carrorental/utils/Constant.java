@@ -177,6 +177,7 @@ public class Constant {
         String PAID_AMT = "paid_amt";
         String B_STATUS = "b_status";
         String BKING_ID = "bking_id";
+        String BKING_REMARK = "bking_remark";
         String B_UNAME = "b_uname";
         String B_UMOBILE = "b_umobile";
         String B_UEMAIL = "b_uemail";
@@ -288,6 +289,7 @@ public class Constant {
 
 
         String ADVERTISE = "advertise";
+        String ADD_REMARK = "update_remark";
 
         String CHECK_BLOCK_WITH_ID = "check_block_with_id";
 

@@ -1,5 +1,7 @@
 package com.carro.carrorental.api;
 
+import android.media.tv.CommandResponse;
+
 import com.carro.carrorental.api.response.BookingDetailResponse;
 import com.carro.carrorental.api.response.BookingResponse;
 import com.carro.carrorental.api.response.BranchResponse;
@@ -649,7 +651,12 @@ public interface ApiInterface {
     @POST(Constant.EndPoint.ADVERTISE)
     Call<AdvertiseModel> get_advertise();
 
-
+    @FormUrlEncoded
+    @POST(Constant.EndPoint.ADD_REMARK)
+    Call<BaseResponse> addRemark(
+            @Field(Constant.ApiKey.BKING_ID) String bking_id,
+            @Field(Constant.ApiKey.BKING_REMARK) String bKing_remark
+    );
     @FormUrlEncoded
     @POST(Constant.EndPoint.BOOKING_DETAILS)
     Call<BookingDetailResponse> getBookingDetails(

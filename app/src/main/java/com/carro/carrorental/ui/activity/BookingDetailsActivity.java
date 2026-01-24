@@ -1,9 +1,11 @@
 package com.carro.carrorental.ui.activity;
 
+import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.tv.CommandResponse;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.carro.carrorental.api.response.commonResponse.BaseResponse;
+import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 import com.carro.carrorental.R;
 import com.carro.carrorental.api.ApiClient;
@@ -71,6 +75,58 @@ public class BookingDetailsActivity extends BaseActivity {
     private void initialization() {
         binding.toolbar.setNavigationOnClickListener(v -> onBackPressed());
         fetchBookingDetails();
+        binding.btnRemark.setOnClickListener(v->showRemarkDialog());
+    }
+    private void showRemarkDialog() {
+        View view = getLayoutInflater().inflate(R.layout.dialog_add_remark, null);
+
+        TextView etRemark = view.findViewById(R.id.etRemark);
+        MaterialButton btnSubmit = view.findViewById(R.id.btnSubmit);
+        MaterialButton btnCancel = view.findViewById(R.id.btnCancel);
+
+        androidx.appcompat.app.AlertDialog dialog =
+                new androidx.appcompat.app.AlertDialog.Builder(this)
+                        .setView(view)
+                        .setCancelable(false)
+                        .create();
+        dialog.setOnShowListener(d -> {
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_rounded);
+            }
+        });
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+
+        btnSubmit.setOnClickListener(v -> {
+            String remark = etRemark.getText().toString().trim();
+
+            if (remark.isEmpty()) {
+                showError("Please enter a remark");
+                return;
+            }
+            ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+            Call<BaseResponse> call = apiInterface.addRemark(bookingId,remark.trim());
+            call.enqueue(new Callback<BaseResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<BaseResponse> call, @NonNull Response<BaseResponse> response) {
+                    hideLoader();
+                    if (response.isSuccessful() && response.body() != null) {
+                        dialog.dismiss();
+                        showAlert("Successfully added remark.");
+                    } else {
+                        showError("Failed to load booking details.");
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<BaseResponse> call, @NonNull Throwable t) {
+                    hideLoader();
+                    showError("Something went wrong. Please check your connection.");
+                }
+            });
+
+        });
+
+        dialog.show();
     }
 
     private void fetchBookingDetails() {
@@ -84,7 +140,12 @@ public class BookingDetailsActivity extends BaseActivity {
                 if (response.isSuccessful() && response.body() != null && response.body().getData() != null && !response.body().getData().isEmpty()) {
                     bookingDetail = response.body().getData().get(0);
                     boolean isCurrents = getIntent().getBooleanExtra("isCurrent",false);
-                    if (isCurrents&&bookingDetail.getmBkingType().equals("2")&&bookingDetail.getmBkingTypeCat().equals("2")){
+                    if(isCurrents && bookingDetail.getmBkingType().equals("2")){
+                        binding.btnRemark.setVisibility(VISIBLE);
+                    }else{
+                        binding.btnRemark.setVisibility(GONE);
+                    }
+                    if (isCurrents && bookingDetail.getmBkingType().equals("2")&&bookingDetail.getmBkingTypeCat().equals("2")){
                         binding.btnUploadImages.setVisibility(VISIBLE);
                     }
                     populateUI();
@@ -111,12 +172,12 @@ public class BookingDetailsActivity extends BaseActivity {
         setBookingStatus(binding.tvBookingStatus, bookingDetail.getmBkingStatus());
 
         if ("2".equals(bookingDetail.getmBkingType())) {
-            binding.layoutLiveLocation.setVisibility(View.GONE);
-            binding.chauffeurDetailsHeader.setVisibility(View.GONE);
-            binding.chauffeurDetailsCard.setVisibility(View.GONE);
+            binding.layoutLiveLocation.setVisibility(GONE);
+            binding.chauffeurDetailsHeader.setVisibility(GONE);
+            binding.chauffeurDetailsCard.setVisibility(GONE);
 
         } else {
-            binding.layoutLiveLocation.setVisibility("2".equals(bookingDetail.getmBkingStatus()) ? VISIBLE : View.GONE);
+            binding.layoutLiveLocation.setVisibility("2".equals(bookingDetail.getmBkingStatus()) ? VISIBLE : GONE);
             binding.chauffeurDetailsHeader.setVisibility(VISIBLE);
             binding.chauffeurDetailsCard.setVisibility(VISIBLE);
         }
@@ -142,7 +203,7 @@ public class BookingDetailsActivity extends BaseActivity {
 
         if ("2".equals(bookingDetail.getmBkingType())) {
             setDetailRow(binding.rowCarName.getRoot(), "Car Name", bookingDetail.getmCtypeTitle() );
-            binding.rowCarType.getRoot().setVisibility(View.GONE);
+            binding.rowCarType.getRoot().setVisibility(GONE);
         }else {
             setDetailRow(binding.rowCarType.getRoot(), "Car Type", bookingDetail.getmCtypeTitle() );
             binding.rowCarType.getRoot().setVisibility(VISIBLE);
@@ -178,7 +239,7 @@ public class BookingDetailsActivity extends BaseActivity {
         if (driverFullName != null && !driverFullName.trim().isEmpty() && !driverFullName.trim().equalsIgnoreCase("null")) {
             // A driver IS assigned, show the details layout
             binding.layoutDriverAssigned.setVisibility(VISIBLE);
-            binding.tvNoDriverAssigned.setVisibility(View.GONE);
+            binding.tvNoDriverAssigned.setVisibility(GONE);
 
             // Format the first name and add "Ji"
             String[] nameParts = driverFullName.trim().split("\\s+");
@@ -192,7 +253,7 @@ public class BookingDetailsActivity extends BaseActivity {
             binding.btnMessageDriver.setOnClickListener(v -> openWhatsApp(bookingDetail.getmDriverMobile()));
         } else {
             // No driver is assigned, show the "Not Yet Assigned" message
-            binding.layoutDriverAssigned.setVisibility(View.GONE);
+            binding.layoutDriverAssigned.setVisibility(GONE);
             binding.tvNoDriverAssigned.setVisibility(VISIBLE);
         }
 
@@ -233,7 +294,7 @@ public class BookingDetailsActivity extends BaseActivity {
 
     private void setDetailRow(View row, String label, String value) {
         if (value == null || value.trim().isEmpty() || value.trim().equalsIgnoreCase("null") || value.trim().equals("0.00")|| value.trim().equals("₹ 0.00")|| value.trim().equals("- ₹ 0.00") || value.trim().equals("0")) {
-            row.setVisibility(View.GONE);
+            row.setVisibility(GONE);
             return;
         }
         row.setVisibility(VISIBLE);
@@ -304,7 +365,7 @@ public class BookingDetailsActivity extends BaseActivity {
 
     private void setBookingStatus(TextView textView, String status) {
         if (status == null) {
-            textView.setVisibility(View.GONE);
+            textView.setVisibility(GONE);
             return;
         }
         textView.setVisibility(VISIBLE);
@@ -330,7 +391,7 @@ public class BookingDetailsActivity extends BaseActivity {
                 textView.setBackgroundResource(R.drawable.bg_status_cancelled);
                 break;
             default:
-                textView.setVisibility(View.GONE);
+                textView.setVisibility(GONE);
                 break;
         }
     }

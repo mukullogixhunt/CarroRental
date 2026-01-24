@@ -340,4 +340,6 @@
     <string name="your_bus_your_seat_your_journey">Your bus, your seat, your journey.</string>
     <string name="upload_images">Upload images</string>
     <string name="delete_account">Delete Account</string>
+    <string name="add_remark">Add Remark</string>
+    <string name="submit">Submit</string>
 </resources>
