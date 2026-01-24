@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    app:cardCornerRadius="@dimen/_10sdp"
+    app:cardElevation="@dimen/_4sdp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ========================================================= -->
+        <!-- ==  STATE 1: PENDING / UPCOMING                         == -->
+        <!-- ========================================================= -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_pending_upcoming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_booking_id_pending"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/tv_status_pending"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Booking ID: CR0001" />
+
+            <TextView
+                android:id="@+id/tv_status_pending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:background="@drawable/bg_status_pending"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_3sdp"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_10ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_booking_id_pending"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_booking_id_pending"
+                tools:text="Pending" />
+
+            <TextView
+                android:id="@+id/tv_service_name_pending"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintStart_toStartOf="@+id/tv_booking_id_pending"
+                app:layout_constraintTop_toBottomOf="@+id/tv_booking_id_pending"
+                tools:text="One Way Cab Service" />
+
+            <TextView
+                android:id="@+id/tv_pickup_location_pending"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="@dimen/_6sdp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_11ssp"
+                app:drawableTint="@color/primary"
+                app:layout_constraintEnd_toEndOf="@+id/tv_status_pending"
+                app:layout_constraintStart_toStartOf="@+id/tv_service_name_pending"
+                app:layout_constraintTop_toBottomOf="@+id/tv_service_name_pending"
+                tools:text="Smriti Nagar, Bhilai, Chhattisgarh" />
+
+            <TextView
+                android:id="@+id/tv_datetime_pending"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:drawableStart="@drawable/ic_calender"
+                android:drawablePadding="@dimen/_6sdp"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_11ssp"
+                app:drawableTint="@color/primary"
+                app:layout_constraintStart_toStartOf="@+id/tv_pickup_location_pending"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pickup_location_pending"
+                tools:text="20 Aug 2025, 10:10 AM" />
+
+            <View
+                android:id="@+id/divider_pending"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/divider_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_datetime_pending" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_pending">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_cancel_pending"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancel"
+                    android:textColor="@color/red" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_details_pending"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/see_details"
+                    android:textColor="@color/primary" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- ========================================================= -->
+        <!-- ==  STATE 2: ACCEPTED / CURRENT                       == -->
+        <!-- ========================================================= -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_accepted_current"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="gone">
+            <!-- This layout will be similar, add views as needed for live location, fleet, etc. -->
+            <!-- Example: -->
+            <TextView
+                android:id="@+id/tv_booking_id_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Booking ID: CR0002" />
+
+            <ImageView
+                android:id="@+id/iv_live_location"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                app:srcCompat="@drawable/ic_live_location"
+                app:tint="@color/green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_booking_id_current"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_booking_id_current"/>
+
+            <!-- Add TextViews for Fleet, Chauffeur Details etc. here -->
+
+            <View
+                android:id="@+id/divider_current"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/divider_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_booking_id_current" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_current">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_call_emg_current"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/emergency_call"
+                    android:textColor="@color/red" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_details_current"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/see_details"
+                    android:textColor="@color/primary" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- ========================================================= -->
+        <!-- ==  STATE 3: COMPLETED / CANCELLED                    == -->
+        <!-- ========================================================= -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_completed_cancelled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_booking_id_completed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/tv_status_completed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Booking ID: CR0003" />
+
+            <TextView
+                android:id="@+id/tv_status_completed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:background="@drawable/bg_status_completed"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_3sdp"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_10ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_booking_id_completed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_booking_id_completed"
+                tools:text="Completed" />
+
+            <TextView
+                android:id="@+id/tv_service_name_completed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintStart_toStartOf="@+id/tv_booking_id_completed"
+                app:layout_constraintTop_toBottomOf="@+id/tv_booking_id_completed"
+                tools:text="Self Drive Service" />
+
+            <TextView
+                android:id="@+id/tv_datetime_completed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:drawableStart="@drawable/ic_calender"
+                android:drawablePadding="@dimen/_6sdp"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_11ssp"
+                app:drawableTint="@color/primary"
+                app:layout_constraintStart_toStartOf="@+id/tv_service_name_completed"
+                app:layout_constraintTop_toBottomOf="@+id/tv_service_name_completed"
+                tools:text="22 Aug 2025, 06:30 PM" />
+
+            <View
+                android:id="@+id/divider_completed"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/divider_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_datetime_completed" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_details_completed"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/see_details"
+                android:textColor="@color/primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_completed" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_7sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_vehicle"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_gravity="center"
+                android:rotation="310"
+                android:src="@drawable/img_car" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:text="Nehru Nagar"
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_bking_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_weight="1.2"
+                        android:background="@drawable/bg_status_style"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="-"
+                        android:textSize="@dimen/_11ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00/00/00"
+                        android:textColor="@color/gray_light2"
+                        android:textSize="@dimen/_11ssp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/tv_view"
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:background="@color/gray_light" />
+
+                    <TextView
+                        android:id="@+id/tv_persons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="4 persons"
+                        android:textColor="@color/gray_light2"
+                        android:textSize="@dimen/_11ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 min"
+                    android:textColor="@color/gray_light2"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_Trip_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_trip"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:text="one way"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/_10ssp" />
+
+                <LinearLayout
+                    android:id="@+id/lv_remain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_paid_amt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_3sdp"
+                        android:text="Rs. 2000"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_remain_amt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_3sdp"
+                        android:text="Rs. 2000"
+                        android:textColor="@color/red2"
+                        android:textSize="@dimen/_10ssp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.9"
+                        android:paddingStart="@dimen/_3sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:text="Rs. 2000"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_booking_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:paddingEnd="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:text="Booking Id : 345678"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_9ssp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:id="@+id/lv_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_shape"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_9sdp"
+        android:layout_marginTop="@dimen/_minus6sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:gravity="center"
+            android:layout_weight="1.2"
+            android:paddingVertical="@dimen/_14sdp"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/primary"/>
+
+        <TextView
+            android:id="@+id/tv_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit"
+            android:gravity="center"
+            android:layout_weight="1.2"
+            android:paddingVertical="@dimen/_14sdp"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@color/primary"/>
+        <TextView
+            android:id="@+id/tv_track"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/track"
+            android:visibility="gone"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:textColor="@color/primary"
+            android:paddingVertical="@dimen/_14sdp"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold" />
+        <View
+            android:id="@+id/viewUpdate"
+            android:layout_width="1dp"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:background="@color/primary"/>
+        <TextView
+            android:id="@+id/tv_update_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update_payment"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/red2"
+            android:paddingVertical="@dimen/_14sdp"
+            android:textSize="@dimen/_11ssp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>-->

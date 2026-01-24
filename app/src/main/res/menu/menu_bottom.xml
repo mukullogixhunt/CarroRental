@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+<!--        <item
+            android:id="@+id/nav_hourly"
+            android:icon="@drawable/ic_location"
+            android:title="@string/hourly">
+        </item>   -->
+
+        <item
+            android:id="@+id/nav_hourly"
+            android:icon="@drawable/ic_location"
+            android:title="@string/city_ride">
+        </item>
+
+
+        <item
+            android:id="@+id/nav_one_way"
+            android:icon="@drawable/ic_oneway"
+            android:title="@string/one_way">
+        </item>
+
+<!--        <item
+            android:id="@+id/nav_round_trip"
+            android:icon="@drawable/ic_round_trip"
+            android:title="@string/round_trip">
+        </item>-->
+
+        <item
+            android:id="@+id/nav_round_trip"
+            android:icon="@drawable/ic_round_trip"
+            android:title="@string/out_station">
+        </item>
+<!--        <item-->
+<!--            android:id="@+id/nav_flight"-->
+<!--            android:icon="@drawable/ic_flight"-->
+<!--            android:title="@string/flight">-->
+<!--        </item>-->
+
+        <item
+            android:id="@+id/nav_flight"
+            android:icon="@drawable/ic_flight"
+            android:title="@string/airport">
+        </item>
+
+
+    </group>
+</menu>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="secondary">#05A9B5</color>
+
+    <color name="primary">#05A9B5</color>
+    <color name="secondary2">#DC4C20</color>
+    <color name="primary_light2_trans">#4D1EB2BC</color>
+    <color name="primary_transparent">#4D0DEBFA</color>
+    <color name="primary_field">#E6F6F8</color>
+
+    <color name="primary_dark1">#008F9B</color>
+    <color name="primary_dark2">#007682</color>
+    <color name="primary_dark3">#005D69</color>
+    <color name="primary_dark4">#00434F</color>
+    <color name="primary_dark5">#002A36</color>
+    <color name="primary_dark6">#00101C</color>
+    <color name="primary_dark7">#000003</color>
+    <color name="primary_dark8">#000000</color>
+
+    <color name="primary_light1">#1EB2BC</color>
+    <color name="primary_light2">#37BAC4</color>
+    <color name="primary_light3">#50C3CB</color>
+    <color name="primary_light4">#69CBD3</color>
+    <color name="primary_light5">#82D4DA</color>
+    <color name="primary_light6">#9BDDE1</color>
+    <color name="primary_light7">#B4E5E9</color>
+    <color name="primary_light8">#CDEEF0</color>
+    <color name="primary_light9">#E6F6F8</color>
+
+    <color name="primary_trans">#66F0702A</color>
+    <color name="primary_light_trans">#80FAD3AE</color>
+
+    <color name="gray">#3F4948</color>
+    <color name="gray_light">#6F7978</color>
+    <color name="gray_light2">#AEB4B4</color>
+    <color name="gray_light3">#D1D0CE</color>
+    <color name="gray_light4">#F0F0F0</color>
+    <color name="scrim">#000000</color>
+    <color name="gray_dark">#2B3231</color>
+    <color name="gray_text">#575656</color>
+
+    <color name="purple">#7929FF</color>
+    <color name="orange">#FD6F00</color>
+    <color name="orange2">#FF4004</color>
+    <color name="blue">#4296E4</color>
+    <color name="red">#66F41F0F</color>
+    <color name="red3">#99F41F0F</color>
+    <color name="red2">#A41004</color>
+    <color name="green">#34A853</color>
+    <color name="greenDark">#18662D</color>
+    <color name="yello">#F2D113</color>
+    <color name="yello2">#DEA907</color>
+    <color name="brown">#816249</color>
+    <color name="sap">#70C0AB</color>
+    <color name="sap1">#70C0AB</color>
+
+
+    <color name="text_secondary">#6c757d</color>
+    <color name="divider_color">#E9ECEF</color>
+    <color name="icon_tint_color">#8A8A8A</color>
+
+</resources>

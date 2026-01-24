@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_80sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/_8sdp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_vehicle_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sedan"
+        android:lines="2"
+        android:ellipsize="end"
+        android:textSize="@dimen/_11ssp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_3sdp"
+        android:layout_gravity="center"
+        android:background="@drawable/image_border_style"
+        android:orientation="vertical">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_vehicle"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_2sdp"
+            app:srcCompat="@drawable/demo_car"
+            app:shapeAppearanceOverlay="@style/circleImageView" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_vehicle_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₹ 1520"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/gray_light"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+</LinearLayout>

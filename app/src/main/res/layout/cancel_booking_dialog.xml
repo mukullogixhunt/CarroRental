@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_cut"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_margin="@dimen/_8sdp"
+            android:src="@drawable/ic_x"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10sdp"
+            android:text="@string/cancelation_reason"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_15ssp"
+            android:paddingStart="@dimen/_20sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_change_of_plans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/change_of_plans" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_alternative_transportation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/alternative_transportation" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_health_issues"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/health_issues" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_error_in_booking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/error_in_booking" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_wrong_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wrong_destination" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_others"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/others" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:background="@drawable/edit_text_shape"
+                android:hint="@string/enter_reason"
+                android:padding="@dimen/_10sdp"
+                android:gravity="start"
+                android:textSize="@dimen/_12ssp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:checked="true"
+                    android:id="@+id/checkbox"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/i_agree_to_the"/>
+                <TextView
+                    android:id="@+id/tv_terms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="@dimen/_3sdp"
+                    android:text="@string/terms_condition"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/and"/>
+                <TextView
+                    android:id="@+id/tv_policy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="@dimen/_3sdp"
+                    android:text="@string/privacy_policy"/>
+
+
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancelBooking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/cancel_booking"
+                android:textSize="@dimen/_15ssp"
+                app:cornerRadius="@dimen/_8sdp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>

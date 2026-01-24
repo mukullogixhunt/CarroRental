@@ -1,0 +1,92 @@
+[versions]
+agp = "8.13.2"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+appcompat = "1.7.1"
+material = "1.13.0"
+activity = "1.12.2"
+constraintlayout = "2.2.1"
+navigationFragment = "2.9.6"
+navigationUi = "2.9.6"
+firebaseCrashlytics = "20.0.4"
+googleGmsGoogleServices = "4.4.4"
+googleFirebaseCrashlytics = "3.0.6"
+appUpdate = "2.1.0"
+firebaseMessaging = "25.0.1"
+zego-uikit = "3.9.11"
+sdp = "1.1.1"
+gson = "2.13.2"
+retrofit = "3.0.0"
+okhttp-logging = "5.3.2"
+spinkit = "1.4.0"
+glide = "5.0.5"
+image-cropper = "4.7.0"
+dots-indicator = "5.1.0"
+otp-view = "v1.1.2"
+circle-image = "3.1.0"
+gif-drawable = "1.2.30"
+razorpay = "1.6.41"
+install-referrer = "2.2"
+snacky = "1.1.5"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+app-update = { group = "com.google.android.play", name = "app-update", version.ref = "appUpdate" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+zego-uikit-prebuilt-call = { group = "com.github.ZEGOCLOUD", name = "zego_uikit_prebuilt_call_android", version.ref = "zego-uikit" }
+# SDP / SSP
+sdp = { group = "com.intuit.sdp", name = "sdp-android", version.ref = "sdp" }
+ssp = { group = "com.intuit.ssp", name = "ssp-android", version.ref = "sdp" }
+
+# Retrofit / Networking
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp-logging" }
+
+# Loader
+spinkit = { group = "com.github.ybq", name = "Android-SpinKit", version.ref = "spinkit" }
+
+# Glide
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+
+# Image Cropper
+image-cropper = { group = "com.vanniktech", name = "android-image-cropper", version.ref = "image-cropper" }
+
+# Dots Indicator
+dots-indicator = { group = "com.tbuonomo", name = "dotsindicator", version.ref = "dots-indicator" }
+
+# OTP View
+otp-view = { group = "com.github.aabhasr1", name = "OtpView", version.ref = "otp-view" }
+
+# Circle Image
+circle-image = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circle-image" }
+
+# GIF Drawable
+gif-drawable = { group = "pl.droidsonroids.gif", name = "android-gif-drawable", version.ref = "gif-drawable" }
+
+# Razorpay
+razorpay = { group = "com.razorpay", name = "checkout", version.ref = "razorpay" }
+
+# Install Referrer
+install-referrer = { group = "com.android.installreferrer", name = "installreferrer", version.ref = "install-referrer" }
+
+# Snackbar
+snacky = { group = "com.github.matecode", name = "Snacky", version.ref = "snacky" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googleFirebaseCrashlytics" }
+

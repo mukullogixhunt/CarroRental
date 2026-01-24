@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_8sdp"
+    android:background="@drawable/otp_active_box"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:elevation="@dimen/_15sdp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_car_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="@string/name"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/ivCar"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:src="@drawable/demo_car" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_fuel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:drawableLeft="@drawable/ic_fuel"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:text="-"
+                    android:visibility="gone"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_seats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_2sdp"
+                    android:drawableLeft="@drawable/icon_seat"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:text="-"
+                    android:visibility="gone"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_car_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:drawableLeft="@drawable/ic_booking"
+                    android:drawableTint="@color/gray_light"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:text="-"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_manual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:drawableLeft="@drawable/icon_manual"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="-"
+                    android:visibility="gone"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Starting Price"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/_10ssp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:background="@drawable/custom_tab_indicator"
+                    android:text="@string/continuee"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBooked"
+                    android:clickable="false"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    app:cornerRadius="@dimen/_8sdp"
+                    app:backgroundTint="@color/red2"
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:text="@string/booked"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvAvailFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:visibility="gone"
+            android:paddingVertical="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="@string/available_from"
+            android:textColor="@color/white"
+            android:background="@drawable/gradient_gold_bg"
+            android:textStyle="bold"
+            android:textSize="@dimen/_11ssp" />
+
+
+
+
+
+    </LinearLayout>
+
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        -->
+    <!--        android:background="@color/gray_light3"-->
+    <!--        android:layout_marginHorizontal="@dimen/_10sdp"-->
+    <!--        android:layout_marginTop="@dimen/_10sdp"/>-->
+
+
+</androidx.cardview.widget.CardView>

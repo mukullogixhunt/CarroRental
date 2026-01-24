@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_15sdp">
+
+    <!-- Rounded container -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:radius="16dp"
+        android:elevation="8dp"
+        android:layout_gravity="center">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Advertisement Image -->
+            <ImageView
+                android:id="@+id/imgAdvertise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:minHeight="@dimen/_200sdp"
+                android:layout_gravity="center"/>
+
+            <!-- Close icon -->
+            <ImageView
+                android:id="@+id/imgClose"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="8dp"
+                android:padding="6dp"
+                android:layout_gravity="top|end"
+                android:background="@drawable/bg_close_circle"
+                android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_6sdp"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_7sdp"
+        app:cardCornerRadius="@dimen/_10ssp"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/ivBus"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_bus_book"/>
+
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginVertical="@dimen/_7sdp"
+        android:layout_marginEnd="@dimen/_7sdp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_seats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12 seater"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:paddingHorizontal="@dimen/_7sdp"
+            android:paddingVertical="@dimen/_3sdp"
+            android:drawableStart="@drawable/icon_seat"
+            android:drawableTint="@color/black"
+            android:drawablePadding="@dimen/_7sdp"
+            android:background="@drawable/edit_text_shape"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_15ssp"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1520"
+            android:drawableStart="@drawable/ic_rupee"
+            android:drawableTint="@color/black"
+            android:drawablePadding="@dimen/_3sdp"
+            android:paddingStart="@dimen/_7sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:textSize="@dimen/_13ssp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

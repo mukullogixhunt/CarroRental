@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "777138864004",
+    "project_id": "carrorental-customer",
+    "storage_bucket": "carrorental-customer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777138864004:android:60e71d387dce3ab51467d1",
+        "android_client_info": {
+          "package_name": "com.carro.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5EtjH5BywQYUFi3QfuV4YrQqbSaX0L_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

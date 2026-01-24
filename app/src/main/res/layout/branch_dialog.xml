@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_city"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:textColor="@color/primary"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:textSize="@dimen/_15ssp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rvBranch"
+        android:layout_marginBottom="@dimen/_10sdp"/>
+
+</LinearLayout>

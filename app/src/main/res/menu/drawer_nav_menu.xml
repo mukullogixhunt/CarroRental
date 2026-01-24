@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home">
+        </item>
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/outline_account_circle_24"
+            android:iconTint="@color/primary"
+            android:title="@string/profile" />
+<!--        <item
+            android:id="@+id/nav_one_way"
+            android:icon="@drawable/ic_oneway"
+            android:title="@string/one_way">
+        </item>-->
+
+
+
+<!--        <item
+            android:id="@+id/nav_round_trip"
+            android:icon="@drawable/ic_round_trip"
+            android:title="@string/out_station">
+        </item>-->
+
+
+
+<!--        <item
+            android:id="@+id/nav_hourly"
+            android:icon="@drawable/icn_location"
+            android:title="@string/city_ride">
+        </item>-->
+
+
+
+<!--        <item
+            android:id="@+id/nav_flight"
+            android:icon="@drawable/ic_flight"
+            android:title="@string/airport">
+        </item>-->
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/icn_notifications"
+            android:iconTint="@color/primary"
+            android:title="@string/notifications" />
+        <item
+            android:id="@+id/nav_my_bookings"
+            android:icon="@drawable/ic_booking"
+            android:iconTint="@color/primary"
+            android:title="@string/my_bookings" />
+
+
+
+
+
+<!--        <item
+            android:id="@+id/nav_self_drive"
+            android:icon="@drawable/ic_self"
+            android:iconTint="@color/primary"
+            android:title="@string/self_driving" />-->
+
+<!--        <item
+            android:id="@+id/nav_offers"
+            android:icon="@drawable/ic_offer"
+            android:iconTint="@color/primary"
+            android:title="@string/offers" />-->
+
+<!--        <item
+            android:id="@+id/nav_packages"
+            android:icon="@drawable/ic_package"
+            android:iconTint="@color/primary"
+            android:title="@string/packages" />-->
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/ic_mobile"
+            android:iconTint="@color/primary"
+            android:title="@string/contact_us" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_about"
+            android:iconTint="@color/primary"
+            android:title="@string/about_us" />
+        <item
+            android:id="@+id/nav_policy"
+            android:icon="@drawable/ic_policy"
+            android:iconTint="@color/primary"
+            android:title="@string/privacy_policy" />
+        <item
+            android:id="@+id/nav_t_c"
+            android:icon="@drawable/ic_terms"
+            android:iconTint="@color/primary"
+            android:title="@string/terms_conditions" />
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_rate"
+            android:iconTint="@color/primary"
+            android:title="@string/rate_us" />
+
+
+
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:iconTint="@color/primary"
+            android:title="@string/logout" />
+        <!--<item
+            android:id="@+id/nav_share"
+            android:title="" />-->
+
+    </group>
+
+
+</menu>

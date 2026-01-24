@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_hourly">
+
+    <fragment
+        android:id="@+id/nav_hourly"
+        android:name="com.carro.carrorental.ui.fragment.bottom.HourlyFragment"
+        tools:layout="@layout/fragment_hourly"/>
+
+    <fragment
+        android:id="@+id/nav_one_way"
+        android:name="com.carro.carrorental.ui.fragment.bottom.OneWayFragment"
+        tools:layout="@layout/fragment_one_way">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_round_trip"
+        android:name="com.carro.carrorental.ui.fragment.bottom.RoundTripFragment"
+        tools:layout="@layout/fragment_round_trip">
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_flight"
+        android:name="com.carro.carrorental.ui.fragment.bottom.FlightFragment"
+        tools:layout="@layout/fragment_flight" />
+
+</navigation>
