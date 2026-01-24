@@ -41,9 +41,10 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
         CarTypeModel item = items.get(holder.getAdapterPosition());
         holder.binding.tvCarName.setText(item.getmCtypeTitle());
         holder.binding.tvSeats.setText(item.getmCtypeSeat()+" Seater");
-        holder.binding.tvFuel.setText("Petrol");
+        holder.binding.tvFuel.setText(item.getmCtypeFuel());
         holder.binding.tvCarType.setText(item.getmCtypeTitle());
-        holder.binding.tvManual.setText("Manual");
+        holder.binding.tvManual.setText(item.getmCtypeDrivetype().equals("1")?"Automatic":"Manual");
+        holder.binding.tvPrice.setText("Price: ₹"+item.getmCtypePrice());
 
         Glide.with(context)
                 .load(ImagePathDecider.getCarImagePath()+item.getmCtypeImg())

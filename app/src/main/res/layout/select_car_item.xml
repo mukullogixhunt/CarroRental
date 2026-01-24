@@ -90,7 +90,17 @@
             android:textColor="@color/gray_light"
             android:textSize="@dimen/_11ssp" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/tv_Price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="-"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18ssp" />
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
