@@ -458,7 +458,6 @@ public interface ApiInterface {
             @Field(Constant.ApiKey.USER_ID) String user_id,
             @Field(Constant.ApiKey.CTYPE_ID) String ctype_id,
             @Field(Constant.ApiKey.PRICE) String price,
-            @Field(Constant.ApiKey.KM) String km,
             @Field(Constant.ApiKey.TOTAL) String total,
             @Field(Constant.ApiKey.PAYMODE_STATUS) String paymode_status,
             @Field(Constant.ApiKey.PAY_STATUS) String pay_status,
@@ -466,6 +465,7 @@ public interface ApiInterface {
             @Field(Constant.ApiKey.B_UNAME) String b_uname,
             @Field(Constant.ApiKey.B_UMOBILE) String b_umobile,
             @Field(Constant.ApiKey.B_UEMAIL) String b_uemail,
+            @Field(Constant.ApiKey.TRANS_ID) String trans_id,
             @Field(Constant.ApiKey.BRANCH_ID) String branch_id
     );
 

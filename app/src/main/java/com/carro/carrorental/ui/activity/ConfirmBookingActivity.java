@@ -572,7 +572,12 @@ public class ConfirmBookingActivity extends BaseActivity implements PaymentResul
     @Override
     public void onPaymentSuccess(String razorpayPaymentId) {
         Checkout.clearUserData(this);
-        insertSelfBookingApi(razorpayPaymentId);
+        if("luxury".equals(screen_type)){
+            insertLuxuryBookingApi(razorpayPaymentId);
+        }else{
+            insertSelfBookingApi(razorpayPaymentId);
+        }
+
     }
 
     @Override
@@ -694,6 +699,66 @@ public class ConfirmBookingActivity extends BaseActivity implements PaymentResul
                 finishAffinity();
             }
         }.start();
+
+    }
+
+
+    private void insertLuxuryBookingApi(String trans_id) {
+        showLoader();
+
+        if (pick_date != null && !pick_date.isEmpty()) {
+            pick_date2 = DateFormater.changeDateFormat(Constant.ddMMyyyy, Constant.yyyyMMdd, pick_date);
+        }
+
+        if (return_date != null && !return_date.isEmpty()) {
+            return_date2 = DateFormater.changeDateFormat(Constant.ddMMyyyy, Constant.yyyyMMdd, return_date);
+        }
+        String pickTime = DateFormater.formatTo24Hour(pick_time);
+        String returnTime = DateFormater.formatTo24Hour(return_time);
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<BookingResponse> call = apiInterface.insert_luxurycar_booking(
+                pick_date2, pickTime,
+                return_date2, returnTime, loginModel.getmCustId(), carTypeModel.getmCtypeId(),
+                carTypeModel.getmCtypePrice(),  carTypeModel.getmCtypePrice(), "1",
+                "1", "1", loginModel.getmCustName(), loginModel.getmCustMobile(),
+                loginModel.getmCustEmail(),trans_id, branch_id);
+        call.enqueue(new Callback<BookingResponse>() {
+            @Override
+            public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
+                hideLoader();
+                try {
+                    if (String.valueOf(response.code()).equalsIgnoreCase(Constant.SUCCESS_RESPONSE_CODE)) {
+                        if (response.body().getResult().equalsIgnoreCase(Constant.SUCCESS_RESPONSE)) {
+                            bookingModelList.addAll(response.body().getData());
+                            showSuccessDialog("Booking Registered Successfully...!", ConfirmBookingActivity.this);
+
+                        } else {
+                            hideLoader();
+                            showError("Your car has not been booked!");
+
+                        }
+                    } else {
+                        hideLoader();
+                        showError("Your car has not been booked!");
+
+                    }
+                } catch (Exception e) {
+                    hideLoader();
+                    e.printStackTrace();
+                    showError("Your car has not been booked!");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BookingResponse> call, Throwable t) {
+                hideLoader();
+                Log.e("Failure", t.toString());
+                showError("Something went wrong");
+            }
+        });
+
 
     }
 }

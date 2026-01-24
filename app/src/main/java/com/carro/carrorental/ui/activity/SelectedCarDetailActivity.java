@@ -72,9 +72,16 @@ public class SelectedCarDetailActivity extends BaseActivity {
         setUpToolBar(binding.toolbar, this, loginModel.getmCustImg());
 
         if (screen_type.equals("luxury")){
+            binding.llRideCar.setVisibility(View.GONE);
             binding.cvData.setVisibility(View.GONE);
+            binding.btnExtraKm.setVisibility(View.GONE);
+            binding.tvPrice.setVisibility(View.GONE);
         }else {
+            binding.llRideCar.setVisibility(View.VISIBLE);
             binding.cvData.setVisibility(View.VISIBLE);
+            binding.btnExtraKm.setVisibility(View.VISIBLE);
+            binding.tvPrice.setVisibility(View.VISIBLE);
+
         }
 
         // Set default selection
@@ -141,7 +148,7 @@ public class SelectedCarDetailActivity extends BaseActivity {
         binding.tvPickupDateTime.setText(pick_date+" "+pick_time);
         binding.tvTime1.setText(pick_time);
         binding.tvDropDateTime.setText(return_date+" "+return_time);
-        binding.tvDropDate.setText(return_date);
+        binding.tvDropDate.setText(return_date+" "+return_time);
         binding.tvAddress.setText(pickAddress);
 
         Glide.with(SelectedCarDetailActivity.this)

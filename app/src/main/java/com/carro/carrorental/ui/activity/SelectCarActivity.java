@@ -183,8 +183,17 @@ public class SelectCarActivity extends BaseActivity implements CarTyprClickListe
     public void onCarTypeClick(CarTypeModel carTypeModel) {
         this.carTypeModel = carTypeModel;
         if (screen_type.equals("luxury")) {
-            insertLuxuryBookingApi();
-
+            //insertLuxuryBookingApi();
+            Intent intent = new Intent(SelectCarActivity.this, SelectedCarDetailActivity.class);
+            intent.putExtra(Constant.BundleExtras.PICK_DATE, pick_date);
+            intent.putExtra(Constant.BundleExtras.PICK_TIME, pick_time);
+            intent.putExtra(Constant.BundleExtras.DROP_DATE, return_date);
+            intent.putExtra(Constant.BundleExtras.DROP_TIME, return_time);
+            intent.putExtra(Constant.BundleExtras.PICK_ADDRESS, pickAddress);
+            intent.putExtra(Constant.BundleExtras.SCREEN_TYPE, screen_type);
+            intent.putExtra(Constant.BundleExtras.PRICE, carTypeModel.getmCtypePrice());
+            intent.putExtra(Constant.BundleExtras.CAR_DATA, new Gson().toJson(carTypeModel));
+            startActivity(intent);
         } else {
             selectPackageDialog();
         }
@@ -271,91 +280,6 @@ public class SelectCarActivity extends BaseActivity implements CarTyprClickListe
         startActivity(intent);
     }
 
-    public void showSuccessDialog(String message, Context context) {
-        dialog1 = new Dialog(SelectCarActivity.this, R.style.my_dialog);
-        dialog1.setCancelable(false);
-        dialog1.setContentView(R.layout.loading_dialog);
-        dialog1.show();
-
-        TextView textView = dialog1.findViewById(R.id.tv_message);
-        textView.setText(message);
-
-        GifImageView gifImageView = dialog1.findViewById(R.id.gifImageView);
-        gifImageView.setImageResource(R.drawable.gif_booking_confirmation);
-
-        new CountDownTimer(2500, 100) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                dialog1.cancel();
-                Intent intent = new Intent(SelectCarActivity.this, MyBookingsActivity.class);
-                startActivity(intent);
-                finishAffinity();
-            }
-        }.start();
-
-    }
-
-    private void insertLuxuryBookingApi() {
-        showLoader();
-
-        if (pick_date != null && !pick_date.isEmpty()) {
-            pick_date2 = DateFormater.changeDateFormat(Constant.ddMMyyyy, Constant.yyyyMMdd, pick_date);
-        }
-
-        if (return_date != null && !return_date.isEmpty()) {
-            return_date2 = DateFormater.changeDateFormat(Constant.ddMMyyyy, Constant.yyyyMMdd, return_date);
-        }
-        String pickTime = DateFormater.formatTo24Hour(pick_time);
-        String returnTime = DateFormater.formatTo24Hour(return_time);
-
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<BookingResponse> call = apiInterface.insert_luxurycar_booking(pick_date2, pickTime,
-                return_date2, returnTime, loginModel.getmCustId(), carTypeModel.getmCtypeId(),
-                carTypeModel.getmCtypePrice(), "", carTypeModel.getmCtypePrice(), "1",
-                "0", "1", loginModel.getmCustName(), loginModel.getmCustMobile(),
-                loginModel.getmCustEmail(), branch_id);
-        call.enqueue(new Callback<BookingResponse>() {
-            @Override
-            public void onResponse(Call<BookingResponse> call, Response<BookingResponse> response) {
-                hideLoader();
-                try {
-                    if (String.valueOf(response.code()).equalsIgnoreCase(Constant.SUCCESS_RESPONSE_CODE)) {
-                        if (response.body().getResult().equalsIgnoreCase(Constant.SUCCESS_RESPONSE)) {
-                            bookingModelList.addAll(response.body().getData());
-                            showSuccessDialog("Booking Registered Successfully...!", SelectCarActivity.this);
-
-                        } else {
-                            hideLoader();
-                            showError("Your car has not been booked!");
-
-                        }
-                    } else {
-                        hideLoader();
-                        showError("Your car has not been booked!");
-
-                    }
-                } catch (Exception e) {
-                    hideLoader();
-                    e.printStackTrace();
-                    showError("Your car has not been booked!");
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BookingResponse> call, Throwable t) {
-                hideLoader();
-                Log.e("Failure", t.toString());
-                showError("Something went wrong");
-            }
-        });
-
-
-    }
     private final Calendar myCalendar = Calendar.getInstance();
 
     private void openDatePickerDialog(String type) {
