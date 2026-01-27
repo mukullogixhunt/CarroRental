@@ -221,6 +221,7 @@ public class Constant {
         String FROM_DATE = "from_date";
         String TO_DATE = "to_date";
         String COUPON_CODE = "coupon_code";
+        String MONTH_DUR = "month_dur";
 
         String DISCOUNT_AMT = "discount_amt";
 

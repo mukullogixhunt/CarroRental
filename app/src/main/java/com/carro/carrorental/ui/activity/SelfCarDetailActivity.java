@@ -626,7 +626,6 @@ public class SelfCarDetailActivity extends BaseActivity implements RentPlanClick
         if (couponModel != null) {
             couponId = couponModel.getmCouponId();
         }
-
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<BaseResponse> call = apiInterface.insert_self_drive_booking(bType,
                 branch_id,
@@ -654,7 +653,9 @@ public class SelfCarDetailActivity extends BaseActivity implements RentPlanClick
                 "1",
                 couponId,
                 couponPersent,
-                String.valueOf(finalCouponAmt));
+                String.valueOf(finalCouponAmt),
+                subDays
+        );
 
         call.enqueue(new Callback<BaseResponse>() {
             @Override

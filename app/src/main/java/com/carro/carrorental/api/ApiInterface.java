@@ -637,7 +637,8 @@ public interface ApiInterface {
             @Field(Constant.ApiKey.BKING_TC) String bking_tc,
             @Field(Constant.ApiKey.COUPONID) String couponid,
             @Field(Constant.ApiKey.DISCOUNT) String discount,
-            @Field(Constant.ApiKey.DISCOUNT_AMT) String discount_amt
+            @Field(Constant.ApiKey.DISCOUNT_AMT) String discount_amt,
+            @Field(Constant.ApiKey.MONTH_DUR) String month_dur
     );
 
     @FormUrlEncoded
