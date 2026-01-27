@@ -19,7 +19,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 import com.carro.carrorental.R;
 import com.carro.carrorental.api.ApiClient;
 import com.carro.carrorental.api.ApiInterface;
@@ -35,6 +34,7 @@ import com.carro.carrorental.utils.Constant;
 import com.carro.carrorental.utils.ImagePathDecider;
 import com.carro.carrorental.utils.PreferenceUtils;
 import com.carro.carrorental.utils.Utils;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,12 +76,12 @@ public class CabDetailActivity extends BaseActivity implements CarTyprClickListe
 
     String cabServiceType = "1";
 
-    int day=1;
+    int day = 1;
 
 
     private boolean isFabExpanded = true;
     private final Handler fabHandler = new Handler(Looper.getMainLooper());
-//    private Runnable retractFabRunnable;
+    //    private Runnable retractFabRunnable;
     private static final long RETRACT_DELAY_MS = 3000;
 
     @Override
@@ -122,7 +122,6 @@ public class CabDetailActivity extends BaseActivity implements CarTyprClickListe
         cabServiceType = getIntent().getStringExtra(Constant.BundleExtras.CAB_SERVICE_TYPE);
 
 
-
         checkUserData();
 
         initialization();
@@ -142,8 +141,6 @@ public class CabDetailActivity extends BaseActivity implements CarTyprClickListe
         getCarTypeApi();
 
         setupRetractingFab();
-
-
 
 
         binding.btnDone.setOnClickListener(new View.OnClickListener() {
@@ -310,79 +307,185 @@ public class CabDetailActivity extends BaseActivity implements CarTyprClickListe
     }
 
 
+//    private void setDataOnViews(CarTypeModel carTypeModel) {
+//
+//        //  webView(Html.fromHtml(carTypeModel.getmCtypeInclusion()).toString());
+//        binding.webView.setText(Html.fromHtml(carTypeModel.getmCtypeInclusion()).toString());
+//
+//        PreferenceUtils.setString(Constant.PreferenceConstant.WEBVIEW_INC, Html.fromHtml(carTypeModelList.get(0).getmCtypeInclusion().toString()).toString(), CabDetailActivity.this);
+//        PreferenceUtils.setString(Constant.PreferenceConstant.WEBVIEW_EXC, Html.fromHtml(carTypeModelList.get(0).getmCtypeExclusion().toString()).toString(), CabDetailActivity.this);
+//        PreferenceUtils.setString(Constant.PreferenceConstant.WEBVIEW_TC, Html.fromHtml(carTypeModelList.get(0).getmCtypeTc().toString()).toString(), CabDetailActivity.this);
+//
+//
+//        binding.tvCarName.setText(carTypeModel.getmCtypeTitle());
+//        binding.tvVehicleSeats.setText(carTypeModel.getmCtypeSeat() + " Seats");
+//        binding.tvVehicleBags.setText(carTypeModel.getmCtypeLuggage() + " Bags");
+//
+//
+//        if (map_distance != null && !map_distance.isEmpty()) {
+//
+
+    /// /            String numberStr = map_distance.replace("km", "").trim();
+//            distance = map_distance.replaceAll("[^\\d.]", "");
+//
+//
+//            if (cabServiceType.equals("3")) {
+//                distance = String.valueOf(Float.parseFloat(distance) * 2);
+//            }
+//
+//            PreferenceUtils.setString(Constant.PreferenceConstant.MAP_DISTANCE, distance, CabDetailActivity.this);
+//            PreferenceUtils.setString(Constant.PreferenceConstant.MAP_DURATION, map_duration, CabDetailActivity.this);
+//
+//
+//            if (cabServiceType.equals("1")) {
+//                total = Float.parseFloat(carTypeModel.getpPrice());
+//
+//
+//                PreferenceUtils.setString(Constant.PreferenceConstant.KM_PRICE, String.valueOf(Float.parseFloat(carTypeModel.getpPrice()) / Float.parseFloat(distance)), CabDetailActivity.this);
+//
+//
+//            } else {
+//                day=Utils.calculateDays(pick_date,pick_time,drop_date,drop_time);
+//                total = Float.parseFloat(carTypeModel.getmCtypePrice()) * Float.parseFloat(distance)/**day*/;
+//
+//
+//                PreferenceUtils.setString(Constant.PreferenceConstant.KM_PRICE, carTypeModel.getmCtypePrice(), CabDetailActivity.this);
+//
+//
+//            }
+//
+//
+//            double offertotal = total + ((total * 10) / 100);
+//
+//
+//            String formattedPrice = String.format("%.2f", total);
+//            String formattedOfferPrice = String.format("%.2f", offertotal);
+//            binding.tvPrice.setText("\u20B9" + formattedPrice);
+//            binding.tvOfferPrice.setText("\u20B9" + formattedOfferPrice);
+//            binding.tvOfferPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+//
+//            price = formattedPrice;
+//
+//
+//            binding.tvPackageDetails.setText(Utils.formatMapDuration(map_duration) + " | " + distance +" Km");
+//
+//        } else {
+//            Toast.makeText(CabDetailActivity.this, "Please Select Valid Destination Range", Toast.LENGTH_SHORT).show();
+//            getOnBackPressedDispatcher().onBackPressed();
+//        }
+//
+//
+//        Glide.with(CabDetailActivity.this)
+//                .load(ImagePathDecider.getCarImagePath() + carTypeModel.getmCtypeImg())
+//                .error(R.drawable.demo_car)
+//                .into(binding.ivVehicle);
+//    }
     private void setDataOnViews(CarTypeModel carTypeModel) {
 
-        //  webView(Html.fromHtml(carTypeModel.getmCtypeInclusion()).toString());
         binding.webView.setText(Html.fromHtml(carTypeModel.getmCtypeInclusion()).toString());
 
-        PreferenceUtils.setString(Constant.PreferenceConstant.WEBVIEW_INC, Html.fromHtml(carTypeModelList.get(0).getmCtypeInclusion().toString()).toString(), CabDetailActivity.this);
-        PreferenceUtils.setString(Constant.PreferenceConstant.WEBVIEW_EXC, Html.fromHtml(carTypeModelList.get(0).getmCtypeExclusion().toString()).toString(), CabDetailActivity.this);
-        PreferenceUtils.setString(Constant.PreferenceConstant.WEBVIEW_TC, Html.fromHtml(carTypeModelList.get(0).getmCtypeTc().toString()).toString(), CabDetailActivity.this);
+        PreferenceUtils.setString(
+                Constant.PreferenceConstant.WEBVIEW_INC,
+                Html.fromHtml(carTypeModelList.get(0).getmCtypeInclusion()).toString(),
+                CabDetailActivity.this
+        );
 
+        PreferenceUtils.setString(
+                Constant.PreferenceConstant.WEBVIEW_EXC,
+                Html.fromHtml(carTypeModelList.get(0).getmCtypeExclusion()).toString(),
+                CabDetailActivity.this
+        );
+
+        PreferenceUtils.setString(
+                Constant.PreferenceConstant.WEBVIEW_TC,
+                Html.fromHtml(carTypeModelList.get(0).getmCtypeTc()).toString(),
+                CabDetailActivity.this
+        );
 
         binding.tvCarName.setText(carTypeModel.getmCtypeTitle());
         binding.tvVehicleSeats.setText(carTypeModel.getmCtypeSeat() + " Seats");
         binding.tvVehicleBags.setText(carTypeModel.getmCtypeLuggage() + " Bags");
 
-
         if (map_distance != null && !map_distance.isEmpty()) {
 
-//            String numberStr = map_distance.replace("km", "").trim();
-            distance = map_distance.replaceAll("[^\\d.]", "");
-
+            float distance = Float.parseFloat(map_distance.replaceAll("[^\\d.]", ""));
 
             if (cabServiceType.equals("3")) {
-                distance = String.valueOf(Float.parseFloat(distance) * 2);
+                distance = distance * 2;
             }
 
-            PreferenceUtils.setString(Constant.PreferenceConstant.MAP_DISTANCE, distance, CabDetailActivity.this);
-            PreferenceUtils.setString(Constant.PreferenceConstant.MAP_DURATION, map_duration, CabDetailActivity.this);
+            PreferenceUtils.setString(
+                    Constant.PreferenceConstant.MAP_DISTANCE,
+                    String.valueOf(distance),
+                    CabDetailActivity.this
+            );
 
+            PreferenceUtils.setString(
+                    Constant.PreferenceConstant.MAP_DURATION,
+                    map_duration,
+                    CabDetailActivity.this
+            );
+
+            float total;
+            int day = 1;
 
             if (cabServiceType.equals("1")) {
+
                 total = Float.parseFloat(carTypeModel.getpPrice());
 
-
-                PreferenceUtils.setString(Constant.PreferenceConstant.KM_PRICE, String.valueOf(Float.parseFloat(carTypeModel.getpPrice()) / Float.parseFloat(distance)), CabDetailActivity.this);
-
+                PreferenceUtils.setString(
+                        Constant.PreferenceConstant.KM_PRICE,
+                        String.valueOf(Float.parseFloat(carTypeModel.getpPrice()) / distance),
+                        CabDetailActivity.this
+                );
 
             } else {
-                day=Utils.calculateDays(pick_date,pick_time,drop_date,drop_time);
-                total = Float.parseFloat(carTypeModel.getmCtypePrice()) * Float.parseFloat(distance)/**day*/;
 
+                day = Utils.calculateDays(pick_date, pick_time, drop_date, drop_time);
 
-                PreferenceUtils.setString(Constant.PreferenceConstant.KM_PRICE, carTypeModel.getmCtypePrice(), CabDetailActivity.this);
+                // 🔥 300 KM per day logic ONLY for wayType == "2"
+                if (wayType.equals("2") && day > 1) {
+                    distance = day * 300;
+                }
 
+                total = Float.parseFloat(carTypeModel.getmCtypePrice()) * distance;
 
+                PreferenceUtils.setString(
+                        Constant.PreferenceConstant.KM_PRICE,
+                        carTypeModel.getmCtypePrice(),
+                        CabDetailActivity.this
+                );
             }
 
-
-            double offertotal = total + ((total * 10) / 100);
-
+            double offerTotal = total + ((total * 10) / 100);
 
             String formattedPrice = String.format("%.2f", total);
-            String formattedOfferPrice = String.format("%.2f", offertotal);
+            String formattedOfferPrice = String.format("%.2f", offerTotal);
+
             binding.tvPrice.setText("\u20B9" + formattedPrice);
             binding.tvOfferPrice.setText("\u20B9" + formattedOfferPrice);
             binding.tvOfferPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
             price = formattedPrice;
 
-
-            binding.tvPackageDetails.setText(Utils.formatMapDuration(map_duration) + " | " + distance +" Km");
+            binding.tvPackageDetails.setText(
+                    Utils.formatMapDuration(map_duration) + " | " + distance + " Km"
+            );
 
         } else {
-            Toast.makeText(CabDetailActivity.this, "Please Select Valid Destination Range", Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    CabDetailActivity.this,
+                    "Please Select Valid Destination Range",
+                    Toast.LENGTH_SHORT
+            ).show();
             getOnBackPressedDispatcher().onBackPressed();
         }
-
 
         Glide.with(CabDetailActivity.this)
                 .load(ImagePathDecider.getCarImagePath() + carTypeModel.getmCtypeImg())
                 .error(R.drawable.demo_car)
                 .into(binding.ivVehicle);
     }
-
 
     @Override
     public void onCarTypeClick(CarTypeModel carTypeModel) {
@@ -452,10 +555,10 @@ public class CabDetailActivity extends BaseActivity implements CarTyprClickListe
         animator.start();
     }*/
 
-  /*  private int dpToPx(int dp) {
-        return (int) (dp * getResources().getDisplayMetrics().density);
-    }
-*/
+    /*  private int dpToPx(int dp) {
+          return (int) (dp * getResources().getDisplayMetrics().density);
+      }
+  */
     @Override
     protected void onPause() {
         super.onPause();
