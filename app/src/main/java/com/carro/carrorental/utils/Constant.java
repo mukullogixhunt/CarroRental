@@ -222,6 +222,10 @@ public class Constant {
         String TO_DATE = "to_date";
         String COUPON_CODE = "coupon_code";
         String MONTH_DUR = "month_dur";
+        String PICKUP_LAT = "pickup_latt";
+        String PICKUP_LNG = "pickup_long";
+        String DROP_LAT = "drop_latt";
+        String DROP_LNG = "drop_long";
 
         String DISCOUNT_AMT = "discount_amt";
 

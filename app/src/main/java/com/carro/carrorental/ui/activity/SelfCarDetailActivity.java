@@ -91,7 +91,7 @@ public class SelfCarDetailActivity extends BaseActivity implements RentPlanClick
             bookType = "", branch_id = "", bName = "", pick_delivery_address = "", package_id = "", subs_id = "", km = "",
             cTypeId = "", subDays = "", cStatus = "", couponPersent = "";
 
-    private double totalFair = 0.0, basePrice = 0.0, withState = 0.0, outState = 0.0,
+    private double totalFair = 0.0, rzpAmount = 0.0,basePrice = 0.0, withState = 0.0, outState = 0.0,
             pickAmt = 0.0, dropAmt = 0.0, bothAmt = 0.0, fastag = 0.0,
             finalCouponAmt = 0.0, pdbAmt = 0.0, selectedStateAmt = 0.0;
 
@@ -499,7 +499,7 @@ public class SelfCarDetailActivity extends BaseActivity implements RentPlanClick
                     if ("1".equals(cStatus)) {
                         binding.btnContinue.setEnabled(false);
                         isPaymentProcessStarted = true;
-                        startPaymentFlow(totalFair);
+                        startPaymentFlow(rzpAmount);
                     } else {
                         Intent intent = new Intent(SelfCarDetailActivity.this, ProfileVerificationActivity.class);
                         intent.putExtra(Constant.BundleExtras.PAGE_TYPE, "self");
@@ -756,6 +756,7 @@ public class SelfCarDetailActivity extends BaseActivity implements RentPlanClick
                     if ("rent".equals(bookType)) {
                         binding.llTop.setVisibility(View.VISIBLE);
                         binding.cardSubscriptionDate.setVisibility(View.GONE);
+                        binding.llPayable.setVisibility(View.GONE);
                         getRentPlanApi();
                     } else {
                         binding.llTop.setVisibility(View.GONE);
@@ -767,6 +768,7 @@ public class SelfCarDetailActivity extends BaseActivity implements RentPlanClick
                         binding.cardFasTag.setVisibility(View.GONE);
                         binding.btnExtra.setVisibility(View.GONE);
                         binding.btnLimit.setVisibility(View.VISIBLE);
+                        binding.llPayable.setVisibility(View.VISIBLE);
                     }
                 } else {
                     showError("Could not load car details.");
@@ -988,7 +990,17 @@ public class SelfCarDetailActivity extends BaseActivity implements RentPlanClick
         // --- 5. Calculate Final Total ---
         totalFair = priceAfterDiscount + pdbAmt + fastag + refundableDeposit;
         if (totalFair < 0) totalFair = 0.0;
-
+        rzpAmount=totalFair;
+        if (!"rent".equals(bookType)){
+            if (subDays != null && !subDays.isEmpty()) {
+               boolean isMonth= subDays.split(" ")[1].equals("Month");
+                int monthCount=Integer.parseInt(subDays.split(" ")[0]);
+               if(isMonth && monthCount>1){
+                   rzpAmount = totalFair / (double) monthCount;
+               }
+                binding.tvPayableFare.setText("₹ " + formatCurrency(rzpAmount));
+            }
+        }
         // --- 6. Update UI ---
         binding.tvBasePrice.setText(formatCurrency(basePrice));
         binding.tvWithinState.setText(formatCurrency(withState));

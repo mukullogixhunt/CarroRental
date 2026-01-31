@@ -980,6 +980,33 @@
                         android:textStyle="bold"
                         tools:text="₹ 4,550.00" />
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llPayable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payable_fare"
+                        android:textColor="@color/primary_dark1"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_payable_fare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:textColor="@color/primary_dark1"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold"
+                        tools:text="₹ 4,550.00" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
