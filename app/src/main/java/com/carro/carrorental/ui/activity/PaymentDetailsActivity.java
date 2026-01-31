@@ -66,9 +66,13 @@ public class PaymentDetailsActivity extends BaseActivity implements PaymentResul
     String pick_date = "";
     String pick_time = "";
     String pickAddress = "";
+    String pickLat = "";
+    String pickLng = "";
     String drop_date = "";
     String drop_time = "";
     String drop_address = "";
+    String dropLat = "";
+    String dropLng = "";
     String airport_name = "";
     String branch = "";
     String userId;
@@ -136,9 +140,13 @@ public class PaymentDetailsActivity extends BaseActivity implements PaymentResul
         pickAddress = getIntent().getStringExtra(Constant.BundleExtras.PICK_ADDRESS);
         pick_date = getIntent().getStringExtra(Constant.BundleExtras.PICK_DATE);
         pick_time = getIntent().getStringExtra(Constant.BundleExtras.PICK_TIME);
+        pickLat = getIntent().getStringExtra(Constant.BundleExtras.LAT_PICK);
+        pickLng = getIntent().getStringExtra(Constant.BundleExtras.LNG_PICK);
         drop_address = getIntent().getStringExtra(Constant.BundleExtras.DROP_ADDRESS);
         drop_date = getIntent().getStringExtra(Constant.BundleExtras.DROP_DATE);
         drop_time = getIntent().getStringExtra(Constant.BundleExtras.DROP_TIME);
+        dropLat = getIntent().getStringExtra(Constant.BundleExtras.LAT_DROP);
+        dropLng = getIntent().getStringExtra(Constant.BundleExtras.LNG_DROP);
         cTypeId = getIntent().getStringExtra(Constant.BundleExtras.C_TYPE_ID);
         carTypeName = getIntent().getStringExtra(Constant.BundleExtras.C_TYPE_NAME);
         carId = getIntent().getStringExtra(Constant.BundleExtras.CAR_ID);
@@ -252,6 +260,12 @@ public class PaymentDetailsActivity extends BaseActivity implements PaymentResul
             binding.webView.setText(tcLink);
         });
 
+        if(cabServiceType.equals("1")){
+            binding.viewA.setVisibility(View.GONE);
+            binding.l2.setVisibility(View.GONE);
+            binding.viewB.setVisibility(View.GONE);
+            binding.l3.setVisibility(View.GONE);
+        }
     }
 
     private void setCardData() {
@@ -437,19 +451,19 @@ public class PaymentDetailsActivity extends BaseActivity implements PaymentResul
 
         switch (cabServiceType) {
             case "1":
-                call = apiInterface.insert_city_ride_booking("1", branch, userId, cTypeId, hour, pickAddress, pick_date2, pickTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt);
+                call = apiInterface.insert_city_ride_booking("1", branch, userId, cTypeId, hour, pickAddress, pick_date2, pickTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt,pickLat,pickLng,dropLat,dropLng);
                 break;
             case "2":
-                call = apiInterface.insert_one_way_booking("2", branch, userId, cTypeId, pickAddress, pickAddress, drop_address, pick_date2, pickTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt);
+                call = apiInterface.insert_one_way_booking("2", branch, userId, cTypeId, pickAddress, pickAddress, drop_address, pick_date2, pickTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt,pickLat,pickLng,dropLat,dropLng);
                 break;
             case "3":
-                call = apiInterface.insert_outstation_booking("3", branch, userId, cTypeId, pickAddress, drop_address, pick_date2, pickTimeIn24Hour, drop_date2, returnTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt);
+                call = apiInterface.insert_outstation_booking("3", branch, userId, cTypeId, pickAddress, drop_address, pick_date2, pickTimeIn24Hour, drop_date2, returnTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt,pickLat,pickLng,dropLat,dropLng);
                 break;
             case "4":
-                call = apiInterface.insert_airport_booking("4", branch, userId, cTypeId, pickAddress, drop_address, pick_date2, pickTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt,flightType);
+                call = apiInterface.insert_airport_booking("4", branch, userId, cTypeId, pickAddress, drop_address, pick_date2, pickTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt,flightType,pickLat,pickLng,dropLat,dropLng);
                 break;
             default:
-                call = apiInterface.insert_city_ride_booking("1", branch, userId, cTypeId, hour, pickAddress, pick_date2, pickTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt);
+                call = apiInterface.insert_city_ride_booking("1", branch, userId, cTypeId, hour, pickAddress, pick_date2, pickTimeIn24Hour, km_price, map_distance, String.valueOf(finalTotalAmt), pay_type, paid_amt, remaining, trans_id, "1", couponId, couponPercent, couponAmt,pickLat,pickLng,dropLat,dropLng);
                 break;
         }
 

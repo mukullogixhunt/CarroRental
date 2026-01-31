@@ -328,7 +328,11 @@ public interface ApiInterface {
             // Standard Coupon Info
             @Field(Constant.ApiKey.COUPONID) String couponid,
             @Field(Constant.ApiKey.DISCOUNT) String discount,
-            @Field(Constant.ApiKey.DISCOUNT_AMT1) String discount_amt
+            @Field(Constant.ApiKey.DISCOUNT_AMT1) String discount_amt,
+            @Field(Constant.ApiKey.PICKUP_LAT) String pickupLat,
+            @Field(Constant.ApiKey.PICKUP_LNG) String pickupLng,
+            @Field(Constant.ApiKey.DROP_LAT) String dropLat,
+            @Field(Constant.ApiKey.DROP_LNG) String dropLng
     );
 
 
@@ -358,7 +362,11 @@ public interface ApiInterface {
             // Standard Coupon Info
             @Field(Constant.ApiKey.COUPONID) String couponid,
             @Field(Constant.ApiKey.DISCOUNT) String discount,
-            @Field(Constant.ApiKey.DISCOUNT_AMT1) String discount_amt
+            @Field(Constant.ApiKey.DISCOUNT_AMT1) String discount_amt,
+            @Field(Constant.ApiKey.PICKUP_LAT) String pickupLat,
+            @Field(Constant.ApiKey.PICKUP_LNG) String pickupLng,
+            @Field(Constant.ApiKey.DROP_LAT) String dropLat,
+            @Field(Constant.ApiKey.DROP_LNG) String dropLng
     );
 
 
@@ -387,7 +395,11 @@ public interface ApiInterface {
             // Standard Coupon Info
             @Field(Constant.ApiKey.COUPONID) String couponid,
             @Field(Constant.ApiKey.DISCOUNT) String discount,
-            @Field(Constant.ApiKey.DISCOUNT_AMT1) String discount_amt
+            @Field(Constant.ApiKey.DISCOUNT_AMT1) String discount_amt,
+            @Field(Constant.ApiKey.PICKUP_LAT) String pickupLat,
+            @Field(Constant.ApiKey.PICKUP_LNG) String pickupLng,
+            @Field(Constant.ApiKey.DROP_LAT) String dropLat,
+            @Field(Constant.ApiKey.DROP_LNG) String dropLng
     );
 
 
@@ -415,7 +427,11 @@ public interface ApiInterface {
             @Field(Constant.ApiKey.COUPONID) String couponid,
             @Field(Constant.ApiKey.DISCOUNT) String discount,
             @Field(Constant.ApiKey.DISCOUNT_AMT1) String discount_amt,
-            @Field(Constant.ApiKey.FLIGHT_TYPE) String flight_type
+            @Field(Constant.ApiKey.FLIGHT_TYPE) String flight_type,
+            @Field(Constant.ApiKey.PICKUP_LAT) String pickupLat,
+            @Field(Constant.ApiKey.PICKUP_LNG) String pickupLng,
+            @Field(Constant.ApiKey.DROP_LAT) String dropLat,
+            @Field(Constant.ApiKey.DROP_LNG) String dropLng
     );
 
 

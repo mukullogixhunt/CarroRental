@@ -71,9 +71,13 @@ public class CabDetailActivity extends BaseActivity implements CarTyprClickListe
     String pick_date = "";
     String pick_time = "";
     String pickAddress = "";
+    String pickLat = "";
+    String pickLng = "";
     String drop_date = "";
     String drop_time = "";
     String drop_address = "";
+    String dropLat = "";
+    String dropLng = "";
 
     String map_distance = "";
     String map_duration = "";
@@ -120,9 +124,13 @@ public class CabDetailActivity extends BaseActivity implements CarTyprClickListe
         pickAddress = getIntent().getStringExtra(Constant.BundleExtras.PICK_ADDRESS);
         pick_date = getIntent().getStringExtra(Constant.BundleExtras.PICK_DATE);
         pick_time = getIntent().getStringExtra(Constant.BundleExtras.PICK_TIME);
+        pickLat = getIntent().getStringExtra(Constant.BundleExtras.LAT_PICK);
+        pickLng = getIntent().getStringExtra(Constant.BundleExtras.LNG_PICK);
         drop_address = getIntent().getStringExtra(Constant.BundleExtras.DROP_ADDRESS);
         drop_date = getIntent().getStringExtra(Constant.BundleExtras.DROP_DATE);
         drop_time = getIntent().getStringExtra(Constant.BundleExtras.DROP_TIME);
+        dropLat = getIntent().getStringExtra(Constant.BundleExtras.LAT_DROP);
+        dropLng = getIntent().getStringExtra(Constant.BundleExtras.LNG_DROP);
 
         map_distance = getIntent().getStringExtra(Constant.BundleExtras.MAP_DISTANCE);
         map_duration = getIntent().getStringExtra(Constant.BundleExtras.MAP_DURATION);
@@ -180,9 +188,13 @@ public class CabDetailActivity extends BaseActivity implements CarTyprClickListe
                 intent.putExtra(Constant.BundleExtras.PICK_ADDRESS, pickAddress);
                 intent.putExtra(Constant.BundleExtras.PICK_DATE, pick_date);
                 intent.putExtra(Constant.BundleExtras.PICK_TIME, pick_time);
+                intent.putExtra(Constant.BundleExtras.LAT_PICK, pickLat);
+                intent.putExtra(Constant.BundleExtras.LNG_PICK, pickLng);
                 intent.putExtra(Constant.BundleExtras.DROP_ADDRESS, drop_address);
                 intent.putExtra(Constant.BundleExtras.DROP_DATE, drop_date);
                 intent.putExtra(Constant.BundleExtras.DROP_TIME, drop_time);
+                intent.putExtra(Constant.BundleExtras.LAT_DROP, dropLat);
+                intent.putExtra(Constant.BundleExtras.LNG_DROP, dropLng);
                 intent.putExtra(Constant.BundleExtras.C_TYPE_ID, carTypeId);
                 intent.putExtra(Constant.BundleExtras.C_TYPE_NAME, carTypeName);
                 intent.putExtra(Constant.BundleExtras.CAR_ID, carId);

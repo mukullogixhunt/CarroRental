@@ -408,7 +408,12 @@ public class SearchLocationActivity extends BaseActivity implements SearchPlaceC
         binding.rvLocations.setVisibility(View.GONE);
         String latt = PreferenceUtils.getString(Constant.PreferenceConstant.BRANCH_LATT, this);
         String lng = PreferenceUtils.getString(Constant.PreferenceConstant.BRANCH_LONG, this);
-        String radius = PreferenceUtils.getString(Constant.PreferenceConstant.BRANCH_RADIUS, this);
+        String radius;
+        if(inputType.equals("2")){
+            radius="50000000";
+        }else{
+            radius=PreferenceUtils.getString(Constant.PreferenceConstant.BRANCH_RADIUS, this);
+        }
 
 
         ApiInterface service = MapsApiClient.getClient().create(ApiInterface.class);

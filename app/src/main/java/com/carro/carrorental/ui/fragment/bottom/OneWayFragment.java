@@ -473,6 +473,10 @@ public class OneWayFragment extends BaseFragment {
 
                 intent.putExtra(Constant.BundleExtras.PICK_ADDRESS, pickAddress);
                 intent.putExtra(Constant.BundleExtras.DROP_ADDRESS, drop_address);
+                intent.putExtra(Constant.BundleExtras.LAT_PICK, latPick);
+                intent.putExtra(Constant.BundleExtras.LNG_PICK, lngPick);
+                intent.putExtra(Constant.BundleExtras.LAT_DROP, latDrop);
+                intent.putExtra(Constant.BundleExtras.LNG_DROP, lngDrop);
                 intent.putExtra(Constant.BundleExtras.PICK_DATE, pick_date);
                 intent.putExtra(Constant.BundleExtras.PICK_TIME, pick_time);
                 intent.putExtra(Constant.BundleExtras.MAP_DISTANCE, mapDistance);

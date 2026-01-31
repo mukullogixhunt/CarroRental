@@ -426,6 +426,10 @@ public class HourlyFragment extends Fragment {
                 intent.putExtra(Constant.BundleExtras.WAY_TYPE, "3");
                 intent.putExtra(Constant.BundleExtras.CAB_SERVICE_TYPE, "1");
                 intent.putExtra(Constant.BundleExtras.PICK_ADDRESS, pickAddress);
+                intent.putExtra(Constant.BundleExtras.LAT_PICK, latPick);
+                intent.putExtra(Constant.BundleExtras.LNG_PICK, lngPick);
+                intent.putExtra(Constant.BundleExtras.LAT_DROP, latDrop);
+                intent.putExtra(Constant.BundleExtras.LNG_DROP, lngDrop);
                 intent.putExtra(Constant.BundleExtras.DROP_ADDRESS, drop_address);
                 intent.putExtra(Constant.BundleExtras.PICK_DATE, pick_date);
                 intent.putExtra(Constant.BundleExtras.PICK_TIME, pick_time);
