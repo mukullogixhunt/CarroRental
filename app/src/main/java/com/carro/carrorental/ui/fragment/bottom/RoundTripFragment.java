@@ -517,10 +517,10 @@ public class RoundTripFragment extends Fragment {
                 intent.putExtra(Constant.BundleExtras.DROP_ADDRESS, drop_address);
                 intent.putExtra(Constant.BundleExtras.DROP_DATE, drop_date);
                 intent.putExtra(Constant.BundleExtras.DROP_TIME, drop_time);
-                intent.putExtra(Constant.BundleExtras.LAT_PICK, latPick);
-                intent.putExtra(Constant.BundleExtras.LNG_PICK, lngPick);
-                intent.putExtra(Constant.BundleExtras.LAT_DROP, latDrop);
-                intent.putExtra(Constant.BundleExtras.LNG_DROP, lngDrop);
+                intent.putExtra(Constant.BundleExtras.LAT_PICK, PreferenceUtils.getString(Constant.PreferenceConstant.PICK_LAT, getContext()));
+                intent.putExtra(Constant.BundleExtras.LNG_PICK, PreferenceUtils.getString(Constant.PreferenceConstant.PICK_LNG, getContext()));
+                intent.putExtra(Constant.BundleExtras.LAT_DROP, PreferenceUtils.getString(Constant.PreferenceConstant.DROP_LAT, getContext()));
+                intent.putExtra(Constant.BundleExtras.LNG_DROP, PreferenceUtils.getString(Constant.PreferenceConstant.DROP_LNG, getContext()));
                 intent.putExtra(Constant.BundleExtras.MAP_DISTANCE, mapDistance);
                 intent.putExtra(Constant.BundleExtras.MAP_DISTANCE_VALUE, mapDistanceValue);
                 intent.putExtra(Constant.BundleExtras.MAP_DURATION, mapDuration);
