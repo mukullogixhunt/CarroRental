@@ -514,6 +514,7 @@ public class HomeActivity extends BaseActivity implements BranchClickListener {
         PreferenceUtils.setString(Constant.PreferenceConstant.BRANCH_ID, branchId, HomeActivity.this);
         PreferenceUtils.setString(Constant.PreferenceConstant.BRANCH_NAME, branchName, HomeActivity.this);
         PreferenceUtils.setString(Constant.PreferenceConstant.BRANCH_LATT, String.valueOf(branchModel.getmBranchLatt()), HomeActivity.this);
+        PreferenceUtils.setString(Constant.PreferenceConstant.BRANCH_LONG, String.valueOf(branchModel.getmBranchLong()), HomeActivity.this);
         PreferenceUtils.setString(Constant.PreferenceConstant.BRANCH_RADIUS,  String.valueOf(branchModel.getmBranchRadius()), HomeActivity.this);
         bName = PreferenceUtils.getString(Constant.PreferenceConstant.BRANCH_NAME, HomeActivity.this);
 

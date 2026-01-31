@@ -159,10 +159,10 @@ public interface ApiInterface {
     @GET("maps/api/place/autocomplete/json")
     Call<PlacesAutocompleteResponse> getPlaceAutocompleteNearBy(
             @Query("input") String input,
-//            @Query("location") String location,
-//            @Query("radius") String radius,
-//            @Query("strictbounds") String strictbounds,
-//            @Query("types") String types,
+            @Query("location") String location,
+            @Query("radius") String radius,
+            @Query("strictbounds") String strictbounds,
+            @Query("types") String types,
             @Query("key") String apiKey
 
     );

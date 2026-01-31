@@ -416,10 +416,10 @@ public class SearchLocationActivity extends BaseActivity implements SearchPlaceC
         // Assuming you have the country restriction logic here
         Call<PlacesAutocompleteResponse> call = service.getPlaceAutocompleteNearBy(
                 input,
-//                latt+","+lng,
-//                radius,
-//                "true",
-//                "establishment",
+                latt+","+lng,
+                radius,
+                "true",
+                "establishment",
                 Constant.GOOGLE_MAP_API_KEY
 
                 );
