@@ -701,6 +701,7 @@ public class SelfCarDetailActivity extends BaseActivity implements RentPlanClick
 
         // Add tabs
         binding. tabLayout.setBackgroundColor(Color.WHITE);
+        binding.tabLayout.removeAllTabs();
         binding.tabLayout.addTab( binding.tabLayout.newTab().setText("Inclusions"));
         binding.tabLayout.addTab( binding.tabLayout.newTab().setText("Exclusions"));
         binding.tabLayout.addTab( binding.tabLayout.newTab().setText("T&C"));
