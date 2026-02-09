@@ -3,11 +3,19 @@ package com.carro.carrorental.ui.activity;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+import static com.carro.carrorental.utils.Constant.QUICKEKYC_API_KEY;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.tv.CommandResponse;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,9 +26,15 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
+import com.carro.carrorental.api.RazorPayApiClient;
+import com.carro.carrorental.api.response.CreateOrderResponse;
+import com.carro.carrorental.api.response.SubscriptionPaymentResponse;
 import com.carro.carrorental.api.response.commonResponse.BaseResponse;
+import com.carro.carrorental.model.SubscriptionPayment;
+import com.carro.carrorental.ui.adapter.SubscriptionPaymentAdapter;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 import com.carro.carrorental.R;
@@ -37,18 +51,28 @@ import com.carro.carrorental.utils.ImagePathDecider;
 import com.carro.carrorental.utils.PreferenceUtils;
 import com.carro.carrorental.utils.Utils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Locale;
 
+import de.mateware.snacky.Snacky;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 
-public class BookingDetailsActivity extends BaseActivity {
+public class BookingDetailsActivity extends BaseActivity  implements PaymentResultListener {
 
     private ActivityBookingDetailsBinding binding;
     private String bookingId = "";
     private LoginModel loginModel = new LoginModel();
     private BookingDetailModel bookingDetail;
+    private SubscriptionPaymentAdapter subscriptionAdapter;
+    Dialog dialog;
+    SubscriptionPayment subscriptionPayment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +98,17 @@ public class BookingDetailsActivity extends BaseActivity {
 
     private void initialization() {
         binding.toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        subscriptionAdapter = new SubscriptionPaymentAdapter(item -> {
+            subscriptionPayment=item;
+            startPaymentFlow(Double.parseDouble(item.getAmount()));
+        });
+        binding.rvSubscriptionPayments.setLayoutManager(
+                new LinearLayoutManager(this));
+        binding.rvSubscriptionPayments.setAdapter(subscriptionAdapter);
+        binding.rvSubscriptionPayments.setNestedScrollingEnabled(false);
         fetchBookingDetails();
         binding.btnRemark.setOnClickListener(v->showRemarkDialog());
+
     }
     private void showRemarkDialog() {
         View view = getLayoutInflater().inflate(R.layout.dialog_add_remark, null);
@@ -288,6 +321,15 @@ public class BookingDetailsActivity extends BaseActivity {
         binding.btnUploadImages.setOnClickListener(v ->
                 startActivity(new Intent(BookingDetailsActivity.this,UploadCarImage.class)
                         .putExtra(Constant.BundleExtras.BOOKING_ID,bookingId)));
+
+        if ("2".equals(bookingDetail.getmBkingType())
+                && "2".equals(bookingDetail.getmBkingTypeCat())) {
+
+            fetchSubscriptionPayments();
+        } else {
+            binding.tvSubscriptionHeader.setVisibility(GONE);
+            binding.cardSubscriptionPayments.setVisibility(GONE);
+        }
     }
 
 
@@ -314,6 +356,41 @@ public class BookingDetailsActivity extends BaseActivity {
         } catch (NumberFormatException e) {
             return "₹ 0.00";
         }
+    }
+    private void fetchSubscriptionPayments() {
+
+        ApiInterface api = ApiClient.getClient().create(ApiInterface.class);
+        Call<SubscriptionPaymentResponse> call =
+                api.getSubscriptionPayments(bookingId);
+
+        call.enqueue(new Callback<SubscriptionPaymentResponse>() {
+            @Override
+            public void onResponse(
+                    @NonNull Call<SubscriptionPaymentResponse> call,
+                    @NonNull Response<SubscriptionPaymentResponse> response) {
+
+                if (response.isSuccessful()
+                        && response.body() != null
+                        && response.body().getData() != null
+                        && !response.body().getData().isEmpty()) {
+
+                    binding.tvSubscriptionHeader.setVisibility(VISIBLE);
+                    binding.cardSubscriptionPayments.setVisibility(VISIBLE);
+                    subscriptionAdapter.submitList(response.body().getData());
+                }
+            }
+
+            @Override
+            public void onFailure(
+                    @NonNull Call<SubscriptionPaymentResponse> call,
+                    @NonNull Throwable t) {
+                Toast.makeText(
+                        BookingDetailsActivity.this,
+                        "Failed to load subscription payments",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        });
     }
 
     private String getServiceName(BookingDetailModel item) {
@@ -428,4 +505,186 @@ public class BookingDetailsActivity extends BaseActivity {
             Toast.makeText(this, "WhatsApp is not installed on your device.", Toast.LENGTH_SHORT).show();
         }
     }
+    public void showSuccessDialog(String message, Context context) {
+        dialog = new Dialog(BookingDetailsActivity.this, R.style.my_dialog);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.loading_dialog);
+        dialog.show();
+
+        TextView textView = dialog.findViewById(R.id.tv_message);
+        textView.setText(message);
+
+        new CountDownTimer(2500, 100) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+
+            @Override
+            public void onFinish() {
+                dialog.cancel();
+                fetchBookingDetails();
+            }
+        }.start();
+    }
+
+    private void setMessageForSnackbar(String msg, boolean flag) {
+        if (flag) {
+            Snacky.builder()
+                    .setActivity(BookingDetailsActivity.this)
+                    .setActionText("Ok")
+                    .setActionClickListener(v -> {
+                        //do something
+                    })
+                    .setText(msg)
+                    .setDuration(Snacky.LENGTH_INDEFINITE)
+                    .success()
+                    .show();
+        } else {
+            Snacky.builder()
+                    .setActivity(BookingDetailsActivity.this)
+                    .setActionText("Ok")
+                    .setActionClickListener(v -> {
+                        //do something
+                    })
+                    .setText(msg)
+                    .setDuration(Snacky.LENGTH_INDEFINITE)
+                    .error()
+                    .show();
+        }
+
+    }
+    // --- NEW RAZORPAY FLOW METHODS ---
+
+    private void startPaymentFlow(final double amount) {
+        ProgressDialog pdLoading = new ProgressDialog(this);
+        pdLoading.setMessage("Initializing Payment...");
+        pdLoading.setCancelable(false);
+        pdLoading.show();
+
+//        RazorPayApiClient.getRazorpayClient().create(ApiInterface.class)
+//                .createRazorpayOrder(String.valueOf(amount))
+//                .enqueue(new Callback<CreateOrderResponse>() {
+//                    @Override
+//                    public void onResponse(@NonNull Call<CreateOrderResponse> call, @NonNull Response<CreateOrderResponse> response) {
+//                        pdLoading.dismiss();
+//                        if (response.isSuccessful() && response.body() != null && "success".equalsIgnoreCase(response.body().getResponseStatus())) {
+//                            String razorpayOrderId = response.body().getOrderId();
+//                            if (razorpayOrderId != null && !razorpayOrderId.isEmpty()) {
+//                                startRazorpayCheckout(amount, razorpayOrderId);
+//                            } else {
+//                                showError("Server did not provide an Order ID.");
+//                                binding.btnBook.setEnabled(true);
+//                            }
+//                        } else {
+//                            showError("Payment initialization failed on server.");
+//                            binding.btnBook.setEnabled(true);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(@NonNull Call<CreateOrderResponse> call, @NonNull Throwable t) {
+//                        pdLoading.dismiss();
+//                        Log.e("PaymentDetailsActivity", "createRazorpayOrder API call failed", t);
+//                        showError("An error occurred. Please check your connection.");
+//                        binding.btnBook.setEnabled(true);
+//                    }
+//                });
+
+
+        RazorPayApiClient.getRazorpayClient().create(ApiInterface.class)
+                .createRazorpayOrderTest(String.valueOf(amount))
+                .enqueue(new Callback<CreateOrderResponse>() {
+                    @Override
+                    public void onResponse(@NonNull Call<CreateOrderResponse> call, @NonNull Response<CreateOrderResponse> response) {
+                        pdLoading.dismiss();
+                        if (response.isSuccessful() && response.body() != null && "success".equalsIgnoreCase(response.body().getResponseStatus())) {
+                            String razorpayOrderId = response.body().getOrderId();
+                            if (razorpayOrderId != null && !razorpayOrderId.isEmpty()) {
+                                startRazorpayCheckout(amount, razorpayOrderId);
+                            } else {
+                                showError("Server did not provide an Order ID.");
+                            }
+                        } else {
+                            showError("Payment initialization failed on server.");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<CreateOrderResponse> call, @NonNull Throwable t) {
+                        pdLoading.dismiss();
+                        Log.e("PaymentDetailsActivity", "createRazorpayOrder API call failed", t);
+                        showError("An error occurred. Please check your connection.");
+                    }
+                });
+    }
+
+    private void startRazorpayCheckout(double amount, String razorpayOrderId) {
+        Checkout checkout = new Checkout();
+//        checkout.setKeyID(getString(R.string.razor_pay_key));
+        checkout.setKeyID(getString(R.string.razor_pay_key_test));
+        checkout.setImage(R.mipmap.ic_launcher);
+        final Activity activity = this;
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name", getResources().getString(R.string.app_name));
+            options.put("description", "Booking Reference No. #" + System.currentTimeMillis());
+            options.put("order_id", razorpayOrderId);
+            options.put("currency", "INR");
+            options.put("amount", (double) (amount * 100)); // Amount in paise
+
+            JSONObject prefill = new JSONObject();
+            prefill.put("email", loginModel.getmCustEmail());
+            prefill.put("contact", loginModel.getmCustMobile());
+            options.put("prefill", prefill);
+
+            checkout.open(activity, options);
+        } catch (Exception e) {
+            showError("Error launching payment screen.");
+        }
+    }
+
+    @Override
+    public void onPaymentSuccess(String razorpayPaymentId) {
+        UpdateSubscriptionPayment();
+        Checkout.clearUserData(this);
+    }
+
+    @Override
+    public void onPaymentError(int code, String description) {
+        Log.e("PaymentDetailsActivity", "Payment Failed: " + code + " " + description);
+        setMessageForSnackbar("Payment Failed: " + description, false);
+        Checkout.clearUserData(this);
+    }
+
+
+    public  void UpdateSubscriptionPayment(){
+        ApiInterface api = ApiClient.getClient().create(ApiInterface.class);
+        Call<SubscriptionPaymentResponse> call = api.updateSubscriptionPayments(bookingId,subscriptionPayment.getId(),subscriptionPayment.getAmount());
+
+        call.enqueue(new Callback<SubscriptionPaymentResponse>() {
+            @Override
+            public void onResponse(
+                    @NonNull Call<SubscriptionPaymentResponse> call,
+                    @NonNull Response<SubscriptionPaymentResponse> response) {
+
+                if (response.isSuccessful()){
+                    showSuccessDialog("Payment done successfully",BookingDetailsActivity.this);
+                }
+            }
+
+            @Override
+            public void onFailure(
+                    @NonNull Call<SubscriptionPaymentResponse> call,
+                    @NonNull Throwable t) {
+                Toast.makeText(
+                        BookingDetailsActivity.this,
+                        "Failed to load subscription payments",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        });
+    }
+
+
 }

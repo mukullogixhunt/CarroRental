@@ -101,52 +101,101 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Trip Details Card -->
-        <TextView style="@style/SectionHeader" android:text="@string/trip_details" />
+        <TextView
+            style="@style/SectionHeader"
+            android:text="@string/trip_details" />
+
         <com.google.android.material.card.MaterialCardView style="@style/DetailCard">
+
             <LinearLayout style="@style/DetailCard.Container">
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_service_name" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_branch_name" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_pickup_location" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_drop_location" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_pickup_datetime" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_drop_datetime" />
+
+                <include
+                    android:id="@+id/row_service_name"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_branch_name"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_pickup_location"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_drop_location"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_pickup_datetime"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_drop_datetime"
+                    layout="@layout/layout_detail_row" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Fleet Details Card -->
-        <TextView style="@style/SectionHeader" android:text="@string/fleet_details" />
+        <TextView
+            style="@style/SectionHeader"
+            android:text="@string/fleet_details" />
+
         <com.google.android.material.card.MaterialCardView style="@style/DetailCard">
+
             <LinearLayout style="@style/DetailCard.Container">
+
                 <ImageView
                     android:id="@+id/iv_car_image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp"
-                    android:scaleType="centerCrop"
                     android:layout_marginBottom="@dimen/_8sdp"
+                    android:scaleType="centerCrop"
                     tools:src="@drawable/demo_car" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_car_name"  />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_car_type"  />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_car_specs" />
+
+                <include
+                    android:id="@+id/row_car_name"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_car_type"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_car_specs"
+                    layout="@layout/layout_detail_row" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Chauffeur Details Card -->
-        <TextView android:id="@+id/chauffeur_details_header" style="@style/SectionHeader" android:text="@string/chauffeur_details" />
+        <TextView
+            android:id="@+id/chauffeur_details_header"
+            style="@style/SectionHeader"
+            android:text="@string/chauffeur_details" />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/chauffeur_details_card"
             style="@style/DetailCard">
+
             <LinearLayout
                 android:id="@+id/layout_driver_assigned"
                 style="@style/DetailCard.Container"
                 android:visibility="gone"
                 tools:visibility="visible">
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_driver_name" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_driver_mobile" />
+
+                <include
+                    android:id="@+id/row_driver_name"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_driver_mobile"
+                    layout="@layout/layout_detail_row" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:orientation="horizontal">
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_call_driver"
                         style="@style/Widget.Material3.Button.OutlinedButton"
@@ -155,8 +204,9 @@
                         android:layout_marginEnd="@dimen/_4sdp"
                         android:layout_weight="1"
                         android:text="@string/call"
-                        app:strokeColor="@color/primary"
-                        app:icon="@drawable/ic_call" />
+                        app:icon="@drawable/ic_call"
+                        app:strokeColor="@color/primary" />
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_message_driver"
                         android:layout_width="0dp"
@@ -166,8 +216,6 @@
                         android:text="@string/message"
                         app:icon="@drawable/ic_message" />
                 </LinearLayout>
-
-
 
 
             </LinearLayout>
@@ -183,34 +231,145 @@
                 android:textColor="@color/text_secondary"
                 android:textSize="@dimen/_11ssp"
                 android:visibility="gone"
-                tools:visibility="gone"/>
+                tools:visibility="gone" />
 
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Payment Details Card -->
-        <TextView style="@style/SectionHeader" android:text="@string/payment_details" />
+        <TextView
+            style="@style/SectionHeader"
+            android:text="@string/payment_details" />
+
         <com.google.android.material.card.MaterialCardView style="@style/DetailCard">
+
             <LinearLayout style="@style/DetailCard.Container">
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_base_price" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_base_distance" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_pickup_fee" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_fastag" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_deposit" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_coupon" />
+
+                <include
+                    android:id="@+id/row_base_price"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_base_distance"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_pickup_fee"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_fastag"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_deposit"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_coupon"
+                    layout="@layout/layout_detail_row" />
+
                 <View style="@style/Divider" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_total" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_paid" />
-                <include layout="@layout/layout_detail_row" android:id="@+id/row_remaining" />
+
+                <include
+                    android:id="@+id/row_total"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_paid"
+                    layout="@layout/layout_detail_row" />
+
+                <include
+                    android:id="@+id/row_remaining"
+                    layout="@layout/layout_detail_row" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_subscription_header"
+            style="@style/SectionHeader"
+            android:text="Subscription Payment Details"
+            android:visibility="gone"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_subscription_payments"
+            style="@style/DetailCard"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <!-- Table Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/_6sdp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:text="Sno."
+                        android:textSize="@dimen/_11ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:text="Date"
+                        android:textSize="@dimen/_11ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Price"
+                        android:textSize="@dimen/_11ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Status"
+                        android:textSize="@dimen/_11ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Action"
+                        android:textSize="@dimen/_11ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View style="@style/Divider" />
+
+                <!-- Dynamic List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_subscription_payments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_subscription_payment" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
 
         <!-- Bottom Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_emergency_call"
                 style="@style/Widget.Material3.Button.OutlinedButton"
@@ -219,7 +378,8 @@
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:layout_weight="1"
                 android:text="@string/_24_x_7_helpline"
-                app:strokeColor="@color/primary"/>
+                app:strokeColor="@color/primary" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_view_bill"
                 android:layout_width="0dp"
@@ -228,6 +388,7 @@
                 android:layout_weight="1"
                 android:text="@string/view_bill" />
         </LinearLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_remark"
             android:layout_width="match_parent"
@@ -235,17 +396,19 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_weight="1"
-            android:visibility="visible"
-            android:text="@string/add_remark" />
+            android:text="@string/add_remark"
+            android:visibility="visible" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_upload_images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_weight="1"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:visibility="visible"
-            android:text="@string/upload_images" />
+            android:layout_weight="1"
+            android:text="@string/upload_images"
+            android:visibility="visible" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -100,6 +100,7 @@
     <string name="enter_coupon_code">Enter Coupon Code</string>
     <string name="apply">Apply</string>
     <string name="payment_details">Payment Details</string>
+    <string name="subscription_payment_details">Subscription Payment Details</string>
     <string name="book_now">Book Now</string>
     <string name="booking_confirmation">Booking Confirmation</string>
     <string name="cancel_trip">Cancel trip</string>

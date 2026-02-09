@@ -27,6 +27,7 @@ import com.carro.carrorental.api.response.SelfRentPlanResponse;
 import com.carro.carrorental.api.response.SelfSubPlanResponse;
 import com.carro.carrorental.api.response.SliderResponse;
 import com.carro.carrorental.api.response.StateResponse;
+import com.carro.carrorental.api.response.SubscriptionPaymentResponse;
 import com.carro.carrorental.api.response.commonResponse.BaseResponse;
 import com.carro.carrorental.model.AadharOtpSendModel;
 import com.carro.carrorental.model.AadharVerificationModel;
@@ -722,10 +723,22 @@ public interface ApiInterface {
 
 
 
-
     @POST(Constant.EndPoint.AADHAAR_GENERATE_OTP)
     Call<AadharOtpSendModel> aadhaar_generate_otp(
             @Body RequestBody body
+    );
+
+    @FormUrlEncoded
+    @POST(Constant.EndPoint.SUBSCRIPTION_PAYMENT_LIST)
+    Call<SubscriptionPaymentResponse> getSubscriptionPayments(
+            @Field("bking_id") String bking_id
+    );
+    @FormUrlEncoded
+    @POST(Constant.EndPoint.UPDATE_SUBSCRIPTION_PAYMENT)
+    Call<SubscriptionPaymentResponse> updateSubscriptionPayments(
+            @Field("bking_id") String bking_id,
+            @Field("stransid") String stransid,
+            @Field("pay_amt") String pay_amt
     );
 
     @POST(Constant.EndPoint.AADHAAR_SUBMIT_OTP)

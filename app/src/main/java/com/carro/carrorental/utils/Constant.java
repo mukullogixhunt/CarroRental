@@ -299,6 +299,8 @@ public class Constant {
         String CHECK_BLOCK_WITH_ID = "check_block_with_id";
 
         String AADHAAR_GENERATE_OTP = "aadhaar-v2/generate-otp";
+        String SUBSCRIPTION_PAYMENT_LIST = "self_subscription_payment_list";
+        String UPDATE_SUBSCRIPTION_PAYMENT = "update_selfsubs_payment";
         String AADHAAR_SUBMIT_OTP = "aadhaar-v2/submit-otp";
         String DRIVING_LICENSE  = "driving-license/driving-license";
     }
