@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -172,31 +173,49 @@ public class FlightFragment extends Fragment {
 
 //        getBranchAPi();
         initiateFromAir();
-        binding.tvFrom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isFromAirport = true;
-                PreferenceUtils.setBoolean(Constant.PreferenceConstant.IS_FROM_AIRPORT, true, requireContext());
-                binding.tvFrom.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primary));
-                binding.tvTo.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white));
-                binding.tvFrom.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
-                binding.tvTo.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary));
-                binding.lldrop.setVisibility(View.VISIBLE);
-                binding.llPickup.setVisibility(View.GONE);
-            }
+        binding.tvFrom.setOnClickListener(v -> {
+            isFromAirport = true;
+            PreferenceUtils.setBoolean(Constant.PreferenceConstant.IS_FROM_AIRPORT, true, requireContext());
+
+            // UI toggle
+            binding.tvFrom.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primary));
+            binding.tvTo.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white));
+            binding.tvFrom.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
+            binding.tvTo.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary));
+
+            // Show relevant layouts
+            binding.llAirport.setVisibility(View.VISIBLE);
+            binding.llPickup.setVisibility(View.GONE);
+            binding.lldrop.setVisibility(View.VISIBLE);
+
+            // Reorder first two fields: Airport first, Drop second
+            LinearLayout parent = (LinearLayout) binding.llAirport.getParent();
+            parent.removeView(binding.llAirport);
+            parent.removeView(binding.lldrop);
+            parent.addView(binding.llAirport, 0);
+            parent.addView(binding.lldrop, 1);
         });
-        binding.tvTo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isFromAirport = false;
-                PreferenceUtils.setBoolean(Constant.PreferenceConstant.IS_FROM_AIRPORT, false, requireContext());
-                binding.tvFrom.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white));
-                binding.tvTo.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primary));
-                binding.tvFrom.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary));
-                binding.tvTo.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
-                binding.lldrop.setVisibility(View.GONE);
-                binding.llPickup.setVisibility(View.VISIBLE);
-            }
+        binding.tvTo.setOnClickListener(v -> {
+            isFromAirport = false;
+            PreferenceUtils.setBoolean(Constant.PreferenceConstant.IS_FROM_AIRPORT, false, requireContext());
+
+            // UI toggle
+            binding.tvFrom.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white));
+            binding.tvTo.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primary));
+            binding.tvFrom.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary));
+            binding.tvTo.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
+
+            // Show relevant layouts
+            binding.llAirport.setVisibility(View.VISIBLE);
+            binding.llPickup.setVisibility(View.VISIBLE);
+            binding.lldrop.setVisibility(View.GONE);
+
+            // Reorder first two fields: Pickup first, Airport second
+            LinearLayout parent = (LinearLayout) binding.llAirport.getParent();
+            parent.removeView(binding.llAirport);
+            parent.removeView(binding.llPickup);
+            parent.addView(binding.llPickup, 0);
+            parent.addView(binding.llAirport, 1);
         });
 
         if (isFromAirport) {
